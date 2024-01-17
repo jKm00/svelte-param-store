@@ -1,49 +1,89 @@
 <script lang="ts">
 	import { useParamStore } from '$lib/composables/paramStore';
 
-	let name = useParamStore<string>('name', '', { debounce: 500 });
-	let search = useParamStore<string>('search', '');
-	let fruits = useParamStore<string>('fruits', []);
+	export let data;
 
-	$: console.log($fruits);
+	$: ({ applications } = data);
+
+	let title = useParamStore('title', { debounce: 500 });
+	let company = useParamStore('company');
+	let tools = useParamStore('tools', { multiple: true });
 </script>
 
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<section class="section">
+	<h1>Welcome to your library project</h1>
+	<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
+	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+</section>
 
 <!-- Demo -->
-<section>
+<section class="section">
 	<h1>Demo</h1>
+	<!-- Filters -->
 	<div class="flex">
 		<div>
-			<input type="text" placeholder="File name..." bind:value={$name} />
-			<p>{$name}</p>
+			<label class="label">
+				Title:
+				<input type="text" placeholder="Application title" bind:value={$title} />
+			</label>
 		</div>
 		<div>
-			<input type="text" placeholder="Search..." bind:value={$search} />
-			<p>{$search}</p>
-		</div>
-		<div>
-			<label>
-				<input type="checkbox" bind:group={$fruits} value="apples" />
-				Apples
-			</label>
-			<label>
-				<input type="checkbox" bind:group={$fruits} value="oranges" />
-				Oranges
-			</label>
-			<label>
-				<input type="checkbox" bind:group={$fruits} value="bananas" />
-				Bananas
+			<label class="label">
+				Company:
+				<input type="text" placeholder="Search..." bind:value={$company} />
 			</label>
 		</div>
+		<div class="rows">
+			<p>Tools:</p>
+			<label>
+				<input type="checkbox" bind:group={$tools} value="react" />
+				React
+			</label>
+			<label>
+				<input type="checkbox" bind:group={$tools} value="typescript" />
+				TypeScript
+			</label>
+			<label>
+				<input type="checkbox" bind:group={$tools} value="express" />
+				Express
+			</label>
+		</div>
+	</div>
+	<!-- Result -->
+	<div class="rows gap">
+		{#if applications}
+			{#each applications as application}
+				<div>
+					<h2>{application.title}</h2>
+					<p>{application.company}</p>
+					<p>{application.tools.join(', ')}</p>
+				</div>
+			{/each}
+		{/if}
 	</div>
 </section>
 
 <style scoped>
+	.section {
+		margin-bottom: 2rem;
+	}
+
 	.flex {
 		display: flex;
+		gap: 1rem;
+	}
+
+	.label {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.rows {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.gap {
 		gap: 1rem;
 	}
 </style>

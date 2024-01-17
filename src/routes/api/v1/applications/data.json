@@ -1,0 +1,52 @@
+[
+	{
+		"title": "Frontend Developer",
+		"company": "TechGenius Inc.",
+		"tools": ["React", "Redux", "TypeScript", "Webpack", "Sass"]
+	},
+	{
+		"title": "Backend Developer",
+		"company": "Innovate Solutions",
+		"tools": ["Node.js", "Express", "MongoDB", "Docker", "AWS"]
+	},
+	{
+		"title": "Full Stack Developer",
+		"company": "CodeCrafters",
+		"tools": ["Vue.js", "Vuex", "Node.js", "PostgreSQL", "Nginx"]
+	},
+	{
+		"title": "Mobile App Developer",
+		"company": "AppMakers",
+		"tools": ["Flutter", "Dart", "Firebase", "REST APIs", "Git"]
+	},
+	{
+		"title": "DevOps Engineer",
+		"company": "CloudNet Services",
+		"tools": ["Kubernetes", "Terraform", "Ansible", "Jenkins", "Azure"]
+	},
+	{
+		"title": "Data Scientist",
+		"company": "DataWise Analytics",
+		"tools": ["Python", "R", "SQL", "TensorFlow", "Jupyter"]
+	},
+	{
+		"title": "Game Developer",
+		"company": "NextLevel Gaming",
+		"tools": ["Unity", "C#", "Unreal Engine", "Blender", "Photoshop"]
+	},
+	{
+		"title": "Security Engineer",
+		"company": "SecureTech",
+		"tools": ["Wireshark", "Metasploit", "Kali Linux", "Nmap", "SQLmap"]
+	},
+	{
+		"title": "UI/UX Designer",
+		"company": "DesignHub",
+		"tools": ["Figma", "Adobe XD", "Sketch", "InVision", "Zeplin"]
+	},
+	{
+		"title": "QA Engineer",
+		"company": "QualityQuest",
+		"tools": ["Selenium", "JIRA", "Cucumber", "Postman", "Jenkins"]
+	}
+]
