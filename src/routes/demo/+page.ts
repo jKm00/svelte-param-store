@@ -1,4 +1,4 @@
-import type { Application } from '$lib/types.js';
+import type { Application } from '../../types.js';
 
 export const load = async ({ url, fetch }) => {
 	async function fetchApplications() {
