@@ -9,22 +9,37 @@ interface ParamStoreOptions {
 
 const defaultOptions: ParamStoreOptions = {};
 
-export const useParamStore = <T>(name: string, fallback: T, options: ParamStoreOptions) => {
-	const urlValue = get(page).url.searchParams.get(name);
-	const initValue = urlValue ? (urlValue as unknown as T) : fallback;
+export const useParamStore = (
+	name: string,
+	fallback: string | string[],
+	options: ParamStoreOptions
+) => {
+	// Get the initial value from the URL
+	const urlValue = get(page).url.searchParams.getAll(name);
+	const initValue = urlValue ? urlValue : fallback;
 
+	// Merge the options with the default options
 	options = { ...defaultOptions, ...options };
 
-	const { subscribe, set, update } = writable<T>(initValue);
+	// Create store
+	const { subscribe, set, update } = writable<string | string[]>(initValue);
 
+	// Subscribe to the store
 	let timeoutId: number | null = null;
 	subscribe(async (value) => {
 		if (options.debounce) {
 			await waitForDelay(options.debounce);
 		}
-		updateParams(value);
+
+		const params = updateParams(value);
+		navigate(`?${params.toString()}`);
 	});
 
+	/**
+	 * A functions that returns a promise that resolves after a delay
+	 * @param delay the delay in milliseconds
+	 * @returns a promise that resolves after the delay
+	 */
 	async function waitForDelay(delay: number) {
 		if (timeoutId) {
 			clearTimeout(timeoutId);
@@ -36,16 +51,34 @@ export const useParamStore = <T>(name: string, fallback: T, options: ParamStoreO
 		});
 	}
 
-	function updateParams(value: T) {
+	/**
+	 * Updates the URL search params
+	 * @param value
+	 */
+	function updateParams(value: string | string[]) {
 		const params = get(page).url.searchParams;
-		if (value) {
-			params.set(name, `${value}`);
-		} else {
-			params.delete(name);
+
+		switch (typeof value) {
+			case 'string':
+				if (value) {
+					params.set(name, value);
+				} else {
+					params.delete(name);
+				}
+				break;
+			case 'object':
+				params.delete(name);
+				value.forEach((v) => params.append(name, v));
+				break;
 		}
-		navigate(`?${params.toString()}`);
+
+		return params;
 	}
 
+	/**
+	 * Navigate to the given URL
+	 * @param url to navigate to
+	 */
 	function navigate(url: string) {
 		if (browser) {
 			goto(url, { keepFocus: true });

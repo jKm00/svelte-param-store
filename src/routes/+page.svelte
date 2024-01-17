@@ -4,6 +4,8 @@
 	let name = useParamStore<string>('name', '', { debounce: 500 });
 	let search = useParamStore<string>('search', '');
 	let fruits = useParamStore<string>('fruits', []);
+
+	$: console.log($fruits);
 </script>
 
 <h1>Welcome to your library project</h1>
