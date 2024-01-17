@@ -5,24 +5,27 @@ import { get, writable } from 'svelte/store';
 
 interface ParamStoreOptions {
 	debounce?: number;
+	multiple: boolean;
 }
 
-const defaultOptions: ParamStoreOptions = {};
+const defaultOptions: ParamStoreOptions = {
+	multiple: false
+};
 
-export const useParamStore = (
-	name: string,
-	fallback: string | string[],
-	options: ParamStoreOptions
-) => {
-	// Get the initial value from the URL
-	const urlValue = get(page).url.searchParams.getAll(name);
-	const initValue = urlValue ? urlValue : fallback;
-
+export const useParamStore = (name: string, options: ParamStoreOptions) => {
 	// Merge the options with the default options
 	options = { ...defaultOptions, ...options };
 
+	// Get the initial value from the URL
+	let urlValue: string | string[];
+	if (options.multiple) {
+		urlValue = get(page).url.searchParams.getAll(name);
+	} else {
+		urlValue = get(page).url.searchParams.get(name) ?? '';
+	}
+
 	// Create store
-	const { subscribe, set, update } = writable<string | string[]>(initValue);
+	const { subscribe, set, update } = writable<string | string[]>(urlValue);
 
 	// Subscribe to the store
 	let timeoutId: number | null = null;
@@ -81,7 +84,7 @@ export const useParamStore = (
 	 */
 	function navigate(url: string) {
 		if (browser) {
-			goto(url, { keepFocus: true });
+			goto(url, { keepFocus: true, invalidateAll: true });
 		}
 	}
 
