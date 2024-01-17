@@ -35,18 +35,12 @@
 		</div>
 		<div class="rows">
 			<p>Tools:</p>
-			<label>
-				<input type="checkbox" bind:group={$tools} value="react" />
-				React
-			</label>
-			<label>
-				<input type="checkbox" bind:group={$tools} value="typescript" />
-				TypeScript
-			</label>
-			<label>
-				<input type="checkbox" bind:group={$tools} value="express" />
-				Express
-			</label>
+			{#each data.tools as tool}
+				<label>
+					<input type="checkbox" bind:group={$tools} value={tool.toLowerCase()} />
+					{tool}
+				</label>
+			{/each}
 		</div>
 	</div>
 	<!-- Result -->

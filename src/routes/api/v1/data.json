@@ -2,51 +2,51 @@
 	{
 		"title": "Frontend Developer",
 		"company": "TechGenius Inc.",
-		"tools": ["React", "Redux", "TypeScript", "Webpack", "Sass"]
+		"tools": ["React", "TypeScript", "Sass"]
 	},
 	{
 		"title": "Backend Developer",
 		"company": "Innovate Solutions",
-		"tools": ["Node.js", "Express", "MongoDB", "Docker", "AWS"]
+		"tools": ["Node.js", "Express", "MongoDB"]
 	},
 	{
 		"title": "Full Stack Developer",
 		"company": "CodeCrafters",
-		"tools": ["Vue.js", "Vuex", "Node.js", "PostgreSQL", "Nginx"]
+		"tools": ["Vue.js", "Node.js", "MongoDB"]
 	},
 	{
 		"title": "Mobile App Developer",
 		"company": "AppMakers",
-		"tools": ["Flutter", "Dart", "Firebase", "REST APIs", "Git"]
+		"tools": ["React", "Node.js", "MongoDB"]
 	},
 	{
 		"title": "DevOps Engineer",
 		"company": "CloudNet Services",
-		"tools": ["Kubernetes", "Terraform", "Ansible", "Jenkins", "Azure"]
+		"tools": ["Docker", "Node.js", "MongoDB"]
 	},
 	{
 		"title": "Data Scientist",
 		"company": "DataWise Analytics",
-		"tools": ["Python", "R", "SQL", "TensorFlow", "Jupyter"]
+		"tools": ["Python", "MongoDB", "TypeScript"]
 	},
 	{
 		"title": "Game Developer",
 		"company": "NextLevel Gaming",
-		"tools": ["Unity", "C#", "Unreal Engine", "Blender", "Photoshop"]
+		"tools": ["Unity", "C#", "TypeScript"]
 	},
 	{
 		"title": "Security Engineer",
 		"company": "SecureTech",
-		"tools": ["Wireshark", "Metasploit", "Kali Linux", "Nmap", "SQLmap"]
+		"tools": ["Python", "Docker", "Sass"]
 	},
 	{
 		"title": "UI/UX Designer",
 		"company": "DesignHub",
-		"tools": ["Figma", "Adobe XD", "Sketch", "InVision", "Zeplin"]
+		"tools": ["Figma", "React", "Sass"]
 	},
 	{
 		"title": "QA Engineer",
 		"company": "QualityQuest",
-		"tools": ["Selenium", "JIRA", "Cucumber", "Postman", "Jenkins"]
+		"tools": ["Selenium", "Python", "Docker"]
 	}
 ]

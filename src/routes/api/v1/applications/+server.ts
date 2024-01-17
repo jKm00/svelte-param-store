@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import data from './data.json';
+import data from '../data.json';
 
 export function GET({ url }) {
 	if (!url) {
