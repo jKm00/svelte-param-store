@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { afterNavigate, goto } from '$app/navigation';
+import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
@@ -99,7 +99,7 @@ export const useParamStore = (name: string, options: ParamStoreOptions) => {
 	 */
 	function navigate(url: string) {
 		if (browser) {
-			goto(url, { keepFocus: true, invalidateAll: true });
+			goto(url, { keepFocus: true, invalidateAll: true, noScroll: true });
 		}
 	}
 
