@@ -22,7 +22,7 @@ Create a variable with:
 
 ```js
 <script>
-  import {useParamStore} from 'svelte-param-store' 
+  import { useParamStore } from 'svelte-param-store' 
   
   let name = useParamStore('name')
 </script>
