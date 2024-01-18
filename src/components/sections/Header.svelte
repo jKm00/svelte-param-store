@@ -4,7 +4,7 @@
 
 <header class="header">
 	<h1 class="title">Svelte Param Store</h1>
-	<p class="desc">A store helping you syncronize you app state and the url!</p>
+	<p class="desc">A store helping you synchronize your app state and the URL!</p>
 	<div class="buttons">
 		<Button href="/demo">
 			<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"
