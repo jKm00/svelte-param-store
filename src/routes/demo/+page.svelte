@@ -12,6 +12,8 @@
 
 <!-- Demo -->
 <section class="section">
+	<p>Disclaimer: work in progress</p>
+	<a href="/">Back to home page</a>
 	<h1>Demo</h1>
 	<!-- Filters -->
 	<div class="flex">
