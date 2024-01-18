@@ -40,6 +40,10 @@ svg {
 	--border-radius: 0.5rem;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family:
 		ui-sans-serif,

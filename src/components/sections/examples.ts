@@ -12,12 +12,12 @@ export const usage = `<script lang="ts">
 export const debounce = `<script lang="ts">
   import { useParamStore } from 'svelte-param-store';
 
-  let name = useParamStore('name', { debounce: 500 });
+  let title = useParamStore('title', { debounce: 500 });
 </script>
 
 <label>
-  Name:
-  <input type="text" bind:value={$name} />
+  Title:
+  <input type="text" bind:value={$title} />
 </label>`;
 
 export const multiple = `<script lang="ts">

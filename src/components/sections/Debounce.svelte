@@ -4,7 +4,7 @@
 	import OutputBlock from '../ui/OutputBlock.svelte';
 	import { debounce } from './examples.js';
 
-	let name = useParamStore('name', { debounce: 500 });
+	let title = useParamStore('title', { debounce: 500 });
 </script>
 
 <secion class="section" id="debounce">
@@ -17,8 +17,8 @@
 	<CodeBlock code={debounce} />
 	<OutputBlock note="The output looks the same, but pay attention to when the URL updates!">
 		<label class="label">
-			Name:
-			<input class="input" type="text" bind:value={$name} placeholder="Enter name..." />
+			Title:
+			<input class="input" type="text" bind:value={$title} placeholder="Enter a title..." />
 		</label>
 	</OutputBlock>
 </secion>

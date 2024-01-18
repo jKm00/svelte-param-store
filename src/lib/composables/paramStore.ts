@@ -45,8 +45,10 @@ export const useParamStore = (name: string, options?: ParamStoreOptions) => {
 				await waitForDelay(options.debounce);
 			}
 
-			const params = updateParams(value);
-			navigate(`?${params.toString()}`);
+			const currentUrl = get(page).url;
+
+			const params = updateParams(currentUrl, value);
+			navigate(`?${params.toString()}${currentUrl.hash}`);
 		});
 
 		// Unsubscribe on demount
@@ -73,8 +75,8 @@ export const useParamStore = (name: string, options?: ParamStoreOptions) => {
 	 * Updates the URL search params
 	 * @param value
 	 */
-	function updateParams(value: string | string[]) {
-		const params = get(page).url.searchParams;
+	function updateParams(currentUrl: URL, value: string | string[]) {
+		const params = currentUrl.searchParams;
 
 		switch (typeof value) {
 			case 'string':
