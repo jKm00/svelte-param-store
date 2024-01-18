@@ -13,16 +13,16 @@ const defaultOptions: ParamStoreOptions = {
 	multiple: false
 };
 
-export const useParamStore = (name: string, options?: ParamStoreOptions) => {
+export const useParamStore = (key: string, options?: ParamStoreOptions) => {
 	// Merge the options with the default options
 	options = { ...defaultOptions, ...options };
 
 	// Get the initial value from the URL
 	let urlValue: string | string[];
 	if (options.multiple) {
-		urlValue = get(page).url.searchParams.getAll(name);
+		urlValue = get(page).url.searchParams.getAll(key);
 	} else {
-		urlValue = get(page).url.searchParams.get(name) ?? '';
+		urlValue = get(page).url.searchParams.get(key) ?? '';
 	}
 
 	// Create store
@@ -81,14 +81,14 @@ export const useParamStore = (name: string, options?: ParamStoreOptions) => {
 		switch (typeof value) {
 			case 'string':
 				if (value) {
-					params.set(name, value);
+					params.set(key, value);
 				} else {
-					params.delete(name);
+					params.delete(key);
 				}
 				break;
 			case 'object':
-				params.delete(name);
-				value.forEach((v) => params.append(name, v));
+				params.delete(key);
+				value.forEach((v) => params.append(key, v));
 				break;
 		}
 

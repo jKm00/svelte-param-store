@@ -5,6 +5,7 @@
 		<li><a href="#usage">Usage</a></li>
 		<li><a href="#debounce">Debounce</a></li>
 		<li><a href="#multiple">Multiple</a></li>
+		<li><a href="#store-api">Store API</a></li>
 	</ul>
 </div>
 

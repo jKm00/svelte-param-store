@@ -8,7 +8,7 @@
 </script>
 
 <secion class="section" id="debounce">
-	<h2>Debounce</h2>
+	<h2 class="title title--secondary">Debounce</h2>
 	<p>
 		Often you dont want to execute the load function on every keystroke. Setting a debounce value
 		will delay the execution of the load function until the user has stopped typing for the given

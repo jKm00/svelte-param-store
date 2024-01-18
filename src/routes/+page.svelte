@@ -5,6 +5,8 @@
 	import Usage from '../components/sections/Usage.svelte';
 	import Multiple from '../components/sections/Multiple.svelte';
 	import PageContent from '../components/sections/PageContent.svelte';
+	import ApiTable from '../components/sections/ApiTable.svelte';
+	import Footer from '../components/sections/Footer.svelte';
 </script>
 
 <main class="main">
@@ -26,6 +28,12 @@
 	<div class="multiple">
 		<Multiple />
 	</div>
+	<div class="api-table">
+		<ApiTable />
+	</div>
+	<div class="footer">
+		<Footer />
+	</div>
 </main>
 
 <style scoped>
@@ -38,10 +46,11 @@
 			'. installation .'
 			'. usage .'
 			'. debounce .'
-			'. multiple .';
-		gap: 4rem;
+			'. multiple .'
+			'. api-table .'
+			'. footer .';
+		row-gap: 4rem;
 
-		padding: 1rem;
 		margin-top: 20dvh;
 	}
 
@@ -69,6 +78,14 @@
 		grid-area: multiple;
 	}
 
+	.api-table {
+		grid-area: api-table;
+	}
+
+	.footer {
+		grid-area: footer;
+	}
+
 	@media (min-width: 1200px) {
 		.main {
 			grid-template-areas:
@@ -76,12 +93,15 @@
 				'. installation page-content'
 				'. usage page-content'
 				'. debounce page-content'
-				'. multiple page-content';
+				'. multiple page-content'
+				'. api-table page-content'
+				'. footer .';
 		}
 
 		.page-content {
 			border-left: 1px solid var(--muted);
 			padding-left: 1rem;
+			margin-left: 1rem;
 		}
 	}
 </style>
