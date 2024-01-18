@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
-import { goto } from '$app/navigation';
+import { afterNavigate, goto } from '$app/navigation';
 import { page } from '$app/stores';
+import { onMount } from 'svelte';
 import { get, writable } from 'svelte/store';
 
 interface ParamStoreOptions {
@@ -27,15 +28,29 @@ export const useParamStore = (name: string, options: ParamStoreOptions) => {
 	// Create store
 	const { subscribe, set, update } = writable<string | string[]>(urlValue);
 
-	// Subscribe to the store
+	// Identifier of the timeout used for debouncing
 	let timeoutId: number | null = null;
-	subscribe(async (value) => {
-		if (options.debounce) {
-			await waitForDelay(options.debounce);
-		}
 
-		const params = updateParams(value);
-		navigate(`?${params.toString()}`);
+	onMount(() => {
+		let first = true;
+		// Subscribe to the store
+		const unsubscribe = subscribe(async (value) => {
+			// Make sure we don't update URL on page mount
+			if (first) {
+				first = false;
+				return;
+			}
+
+			if (options.debounce) {
+				await waitForDelay(options.debounce);
+			}
+
+			const params = updateParams(value);
+			navigate(`?${params.toString()}`);
+		});
+
+		// Unsubscribe on demount
+		return () => unsubscribe();
 	});
 
 	/**
