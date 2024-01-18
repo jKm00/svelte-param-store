@@ -36,4 +36,4 @@ Bind it to an input:
 
 ## Documentation
 
-You can find a more detailed documentation as well as a full demo at [Svelte Param Store]()
+You can find a more detailed documentation as well as a full demo at [Svelte Param Store](https://svelte-param-store.vercel.app/)

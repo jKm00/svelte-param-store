@@ -1,10 +1,10 @@
 <footer>
 	<p>
-		Documentation page is heavily inspired by <a href="https://svelte-sonner.vercel.app/"
+		Documentation page is heavily inspired by <a href="https://svelte-sonner.vercel.app/" target="_blank"
 			>Svelte Sonner</a
 		>
 	</p>
-	<p>Made by <a href="https://edvardsen.dev/">Joakim Edvardsen</a></p>
+	<p>Made by <a href="https://edvardsen.dev/" target="_blank">Joakim Edvardsen</a></p>
 </footer>
 
 <style scoped>
