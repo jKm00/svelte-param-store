@@ -19,7 +19,7 @@
 		<div class="grid row">
 			<p>Options</p>
 			<a href="#options-api">Object</a>
-			<p>Exaplain in detail belove</p>
+			<p>Explained in the table belove</p>
 			<p>No</p>
 		</div>
 	</div>
