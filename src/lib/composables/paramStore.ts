@@ -6,14 +6,14 @@ import { get, writable } from 'svelte/store';
 
 interface ParamStoreOptions {
 	debounce?: number;
-	multiple: boolean;
+	multiple?: boolean;
 }
 
 const defaultOptions: ParamStoreOptions = {
 	multiple: false
 };
 
-export const useParamStore = (name: string, options: ParamStoreOptions) => {
+export const useParamStore = (name: string, options?: ParamStoreOptions) => {
 	// Merge the options with the default options
 	options = { ...defaultOptions, ...options };
 

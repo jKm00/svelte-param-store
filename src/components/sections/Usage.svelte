@@ -1,16 +1,26 @@
 <script lang="ts">
+	import { useParamStore } from '$lib/composables/paramStore.js';
 	import CodeBlock from '../ui/CodeBlock.svelte';
+	import OutputBlock from '../ui/OutputBlock.svelte';
 	import { usage } from './examples.js';
+
+	let name = useParamStore('name');
 </script>
 
-<section class="section">
+<section class="section" id="usage">
 	<h2 class="title title--secondary">Usage</h2>
 	<p>Create a new store and then use it as any other state variable.</p>
 	<CodeBlock code={usage} />
-	<p>
-		When the value of the input changes, the store and the URL will reflect this changes. Any load
-		function that is depended on the url will re-execute!
-	</p>
-	<p>This is the URL after the user types in the name Joakim:</p>
-	<CodeBlock autodetect={false} language="xml" code={'https://example.com/?name=Joakim'} />
+	<OutputBlock note="Notice the URL when you enter a value in the input!">
+		<label class="label">
+			Name:
+			<input class="input" type="text" bind:value={$name} placeholder="Enter name..." />
+		</label>
+	</OutputBlock>
 </section>
+
+<style scoped>
+	.label {
+		font-size: 0.9rem;
+	}
+</style>

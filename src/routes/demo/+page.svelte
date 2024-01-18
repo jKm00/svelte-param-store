@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { useParamStore } from '$lib/composables/paramStore';
+	import { useParamStore } from '$lib/composables/paramStore.js';
 
 	export let data;
 

@@ -1,25 +1,87 @@
 <script lang="ts">
+	import Debounce from '../components/sections/Debounce.svelte';
 	import Header from '../components/sections/Header.svelte';
 	import Installation from '../components/sections/Installation.svelte';
 	import Usage from '../components/sections/Usage.svelte';
+	import Multiple from '../components/sections/Multiple.svelte';
+	import PageContent from '../components/sections/PageContent.svelte';
 </script>
 
 <main class="main">
-	<Header />
-	<Installation />
-	<Usage />
+	<div class="header">
+		<Header />
+	</div>
+	<div class="page-content">
+		<PageContent />
+	</div>
+	<div class="installation">
+		<Installation />
+	</div>
+	<div class="usage">
+		<Usage />
+	</div>
+	<div class="debounce">
+		<Debounce />
+	</div>
+	<div class="multiple">
+		<Multiple />
+	</div>
 </main>
 
 <style scoped>
 	.main {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: minmax(1rem, 1fr) minmax(auto, 800px) minmax(1rem, 2fr);
+		grid-template-areas:
+			'. header .'
+			'. page-content .'
+			'. installation .'
+			'. usage .'
+			'. debounce .'
+			'. multiple .';
 		gap: 4rem;
 
-		width: min(100%, 800px);
-		margin: auto;
-
 		padding: 1rem;
-		padding-top: 20dvh;
+		margin-top: 20dvh;
+	}
+
+	.header {
+		grid-area: header;
+	}
+
+	.page-content {
+		grid-area: page-content;
+	}
+
+	.installation {
+		grid-area: installation;
+	}
+
+	.usage {
+		grid-area: usage;
+	}
+
+	.debounce {
+		grid-area: debounce;
+	}
+
+	.multiple {
+		grid-area: multiple;
+	}
+
+	@media (min-width: 1200px) {
+		.main {
+			grid-template-areas:
+				'. header page-content'
+				'. installation page-content'
+				'. usage page-content'
+				'. debounce page-content'
+				'. multiple page-content';
+		}
+
+		.page-content {
+			border-left: 1px solid var(--muted);
+			padding-left: 1rem;
+		}
 	}
 </style>

@@ -29,10 +29,13 @@ svg {
 :root {
 	--background: #fff;
 	--foreground: #000;
+	--foreground-muted: #718096;
 	--muted: #eef2f6;
 	--muted-foreground: #718096;
+	--muted-hover: #f2f2f2;
 	--accent: #000;
 	--accent-foreground: #fff;
+	--accent-hover: #1a1a1a;
 
 	--border-radius: 0.5rem;
 }
@@ -63,30 +66,6 @@ body {
 	gap: 1rem;
 }
 
-.btn {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-
-	background: var(--accent);
-	color: var(--accent-foreground);
-	fill: var(--accent-foreground);
-
-	padding: 0.5rem 1rem;
-	border-radius: var(--border-radius);
-	border: 2px solid var(--accent);
-
-	font-size: 0.9rem;
-}
-
-.btn--secondary {
-	background: var(--background);
-	color: var(--foreground);
-	fill: var(--foreground);
-
-	border-color: var(--muted);
-}
-
 .title {
 	font-size: 2.5rem;
 	margin-bottom: 0.75rem;
@@ -97,13 +76,27 @@ body {
 	margin-bottom: 0.5rem;
 }
 
-.copy {
-	position: absolute;
-	right: 0.5rem;
-	top: 0.5rem;
+.title--tertiary {
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+}
 
-	background-color: var(--background);
-	border: 1px solid var(--muted);
-	padding: 0.5rem;
+p {
+	line-height: 1.75;
+}
+
+.label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.label--checkbox {
+	flex-direction: row;
+}
+
+.input {
+	padding: 0.5rem 1rem;
+	border: 2px solid var(--accent);
 	border-radius: var(--border-radius);
 }

@@ -105,4 +105,15 @@
 
 		white-space: pre-wrap;
 	}
+
+	.copy {
+		position: absolute;
+		right: 0.5rem;
+		top: 0.5rem;
+
+		background-color: var(--background);
+		border: 1px solid var(--muted);
+		padding: 0.5rem;
+		border-radius: var(--border-radius);
+	}
 </style>
