@@ -1,2 +1,2 @@
 // Reexport your entry components here
-export { useParamStore } from '$lib/composables/paramStore.js';
+export { useParamStore } from './composables/paramStore.js';
