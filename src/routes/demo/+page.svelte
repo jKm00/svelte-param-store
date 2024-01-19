@@ -33,9 +33,13 @@
 		<h1 class="title title--secondary">Demo</h1>
 		<p>
 			This is a full demo showing how this library can be used. Open the dev tools and see how this
-			package works with automatically fetching new data when the filters change.
+			package works with automatically fetching new data when the filters change. <a
+				target="_blank"
+				href="https://github.com/jKm00/svelte-param-store/tree/main/src/routes/demo"
+				>View the demo source code here.</a
+			>
 		</p>
-		<a href="/"
+		<a class="icon-link home-page-link" href="/"
 			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
 				><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
 					d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
@@ -103,7 +107,7 @@
 
 	.header {
 		grid-column: 1 / -1;
-		margin-bottom: 4rem;
+		margin-bottom: 3rem;
 	}
 
 	.header p,
@@ -117,19 +121,23 @@
 	}
 
 	.header a {
+		color: var(--accent);
+		fill: var(--accent);
+	}
+
+	.icon-link {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-
-		color: var(--accent);
-		fill: var(--accent);
-
-		text-decoration: underline;
 	}
 
-	.header a svg {
+	.icon-link svg {
 		width: 0.8rem;
 		height: 0.8rem;
+	}
+
+	.home-page-link {
+		margin-top: 2rem;
 	}
 
 	.filters {
