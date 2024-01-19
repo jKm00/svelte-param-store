@@ -32,6 +32,7 @@
 	a {
 		color: var(--color-foreground);
 		font-size: 0.9rem;
+		text-decoration: none;
 	}
 
 	@media (min-width: 1200px) {

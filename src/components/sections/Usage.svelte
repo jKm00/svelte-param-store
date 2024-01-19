@@ -17,6 +17,11 @@
 			<input class="input" type="text" bind:value={$name} placeholder="Enter name..." />
 		</label>
 	</OutputBlock>
+	<p>
+		Since the URL is updated, the load function is re-executed with the new query params. This can
+		then be used to fetch new data from an API. Take a look at the <a href="/demo">full demo</a> to see
+		this in action.
+	</p>
 </section>
 
 <style scoped>

@@ -26,6 +26,7 @@
 		border: 2px solid var(--accent);
 
 		font-size: 0.9rem;
+		text-decoration: none;
 
 		transition: background-color 150ms ease-in-out;
 	}
