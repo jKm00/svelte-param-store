@@ -1,81 +1,198 @@
 <script lang="ts">
 	import { useParamStore } from '$lib/composables/paramStore.js';
+	import Footer from '../../components/sections/Footer.svelte';
+
+	const TOOLS = [
+		'React',
+		'TypeScript',
+		'Sass',
+		'Node.js',
+		'Express',
+		'MongoDB',
+		'Vue.js',
+		'Docker',
+		'Python',
+		'Unity',
+		'C#',
+		'Figma',
+		'Selenium'
+	];
 
 	export let data;
 
 	$: ({ applications } = data);
 
 	let title = useParamStore('title', { debounce: 500 });
-	let company = useParamStore('company');
+	let company = useParamStore('company', { debounce: 500 });
 	let tools = useParamStore('tools', { multiple: true });
 </script>
 
 <!-- Demo -->
-<section class="section">
-	<p>Disclaimer: work in progress</p>
-	<a href="/">Back to home page</a>
-	<h1>Demo</h1>
-	<!-- Filters -->
-	<div class="flex">
+<main class="main">
+	<header class="header">
+		<h1 class="title title--secondary">Demo</h1>
+		<p>
+			This is a full demo showing how this library can be used. Open the dev tools and see how this
+			package works with automatically fetching new data when the filters change.
+		</p>
+		<a href="/"
+			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+				><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
+					d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
+				/></svg
+			>Back to landing page</a
+		>
+	</header>
+	<!-- Filters-->
+	<aside class="filters">
+		<h2 class="title title--secondary">Job Applications</h2>
+		<label class="label">
+			Title:
+			<input type="text" bind:value={$title} placeholder="Enter job title..." class="input" />
+		</label>
+		<label class="label">
+			Company:
+			<input type="text" bind:value={$company} placeholder="Enter company name..." class="input" />
+		</label>
 		<div>
-			<label class="label">
-				Title:
-				<input type="text" placeholder="Application title" bind:value={$title} />
-			</label>
-		</div>
-		<div>
-			<label class="label">
-				Company:
-				<input type="text" placeholder="Search..." bind:value={$company} />
-			</label>
-		</div>
-		<div class="rows">
-			<p>Tools:</p>
-			{#if data.tools}
-				{#each data.tools as tool}
-					<label>
-						<input type="checkbox" bind:group={$tools} value={tool.toLowerCase()} />
+			<p class="tools-label">Tools / Languages:</p>
+			<div class="tools">
+				{#each TOOLS as tool}
+					<label class="checkbox">
+						<input type="checkbox" bind:group={$tools} value={tool} />
 						{tool}
 					</label>
 				{/each}
-			{/if}
+			</div>
 		</div>
-	</div>
-	<!-- Result -->
-	<div class="rows gap">
-		{#if applications}
+	</aside>
+	<!-- Results -->
+	<section class="applications">
+		<p class="counter"><span class="underline">Results:</span> {applications?.length}</p>
+		{#if !applications || applications.length === 0}
+			<p class="error">No results...</p>
+		{:else}
 			{#each applications as application}
-				<div>
-					<h2>{application.title}</h2>
+				<article class="card">
+					<h3>{application.title}</h3>
 					<p>{application.company}</p>
 					<p>{application.tools.join(', ')}</p>
-				</div>
+				</article>
 			{/each}
 		{/if}
-	</div>
-</section>
+	</section>
+</main>
+<div class="footer">
+	<Footer />
+</div>
 
 <style scoped>
-	.section {
-		margin-bottom: 2rem;
+	.underline {
+		text-decoration: underline;
 	}
 
-	.flex {
+	.main {
+		display: grid;
+		grid-template-columns: 15rem 1fr;
+
+		width: min(100%, 800px);
+		margin: auto;
+		padding-top: 4rem;
+		padding-inline: 1rem;
+	}
+
+	.header {
+		grid-column: 1 / -1;
+		margin-bottom: 4rem;
+	}
+
+	.header p,
+	.header a {
+		font-size: 0.9rem;
+	}
+
+	.header p {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+
+	.header a {
 		display: flex;
-		gap: 1rem;
+		align-items: center;
+		gap: 0.5rem;
+
+		color: var(--accent);
+		fill: var(--accent);
+
+		text-decoration: underline;
 	}
 
-	.label {
+	.header a svg {
+		width: 0.8rem;
+		height: 0.8rem;
+	}
+
+	.filters {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		padding-right: 1rem;
+		margin-right: 1rem;
+		border-right: 1px solid var(--muted);
+	}
+
+	.tools {
 		display: flex;
 		flex-direction: column;
 	}
 
-	.rows {
+	.applications {
 		display: flex;
 		flex-direction: column;
+		gap: 1rem;
 	}
 
-	.gap {
-		gap: 1rem;
+	.counter {
+		font-size: 0.9rem;
+	}
+
+	.error {
+		font-size: 0.9rem;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+
+		border-radius: var(--border-radius);
+		border: 2px solid var(--accent);
+
+		padding: 1rem;
+	}
+
+	.footer {
+		width: min(100%, 800px);
+		margin: auto;
+		padding-inline: 1rem;
+	}
+
+	@media (max-width: 800px) {
+		.main {
+			grid-template-columns: 1fr;
+		}
+
+		.filters {
+			padding-right: 0;
+			margin-right: 0;
+			margin-bottom: 2rem;
+			border-right: none;
+		}
+
+		.tools {
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 0.25rem 1rem;
+		}
 	}
 </style>
