@@ -7,6 +7,7 @@
 	import PageContent from '../components/sections/PageContent.svelte';
 	import ApiTable from '../components/sections/ApiTable.svelte';
 	import Footer from '../components/sections/Footer.svelte';
+	import UpdateProgrammatically from '../components/sections/UpdateProgrammatically.svelte';
 </script>
 
 <main class="main">
@@ -28,6 +29,9 @@
 	<div class="multiple">
 		<Multiple />
 	</div>
+	<div class="update-programmatically">
+		<UpdateProgrammatically />
+	</div>
 	<div class="api-table">
 		<ApiTable />
 	</div>
@@ -47,6 +51,7 @@
 			'. usage .'
 			'. debounce .'
 			'. multiple .'
+			'. update-programmatically .'
 			'. api-table .'
 			'. footer .';
 		row-gap: 4rem;
@@ -78,6 +83,10 @@
 		grid-area: multiple;
 	}
 
+	.update-programmatically {
+		grid-area: update-programmatically;
+	}
+
 	.api-table {
 		grid-area: api-table;
 	}
@@ -94,6 +103,7 @@
 				'. usage page-content'
 				'. debounce page-content'
 				'. multiple page-content'
+				'. update-programmatically page-content'
 				'. api-table page-content'
 				'. footer .';
 		}

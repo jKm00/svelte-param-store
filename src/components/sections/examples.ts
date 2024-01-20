@@ -38,3 +38,21 @@ export const multiple = `<script lang="ts">
   <input type="checkbox" bind:group={$fruits} value="banan" />
   Banan
 </label>`;
+
+export const updateProgrammatically = `<script lang="ts">
+  import { useParamStore } from 'svelte-param-store';
+  
+  let company = useParamStore('company');
+  
+  function clearFilter() {
+    $company = '';
+    // or
+    // company.set('');
+  }
+</script>
+
+<label>
+  Company:
+  <input type="text" bind:value={$company} />
+</label>
+<button on:click={clearFilter}>Clear</button>`;

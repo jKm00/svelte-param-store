@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { useParamStore } from '$lib/composables/paramStore.js';
 	import Footer from '../../components/sections/Footer.svelte';
+	import Button from '../../components/ui/Button.svelte';
 
 	const TOOLS = [
 		'React',
@@ -25,6 +26,12 @@
 	let title = useParamStore('title', { debounce: 500 });
 	let company = useParamStore('company', { debounce: 500 });
 	let tools = useParamStore('tools', { multiple: true });
+
+	function clearFilters() {
+		title.set('');
+		company.set('');
+		tools.set([]);
+	}
 </script>
 
 <!-- Demo -->
@@ -69,6 +76,7 @@
 				{/each}
 			</div>
 		</div>
+		<Button on:click={clearFilters}>Clear all</Button>
 	</aside>
 	<!-- Results -->
 	<section class="applications">
