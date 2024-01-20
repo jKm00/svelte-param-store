@@ -38,7 +38,7 @@
 			<div class="grid row">
 				<p>Deboune</p>
 				<p>number</p>
-				<p>Number of milliseconds between keystrokes before the state updated.</p>
+				<p>Number of milliseconds between keystrokes before the state and the URL updates.</p>
 				<p>undefined</p>
 			</div>
 			<div class="grid row">

@@ -10,6 +10,7 @@ interface ParamStoreOptions {
 }
 
 const defaultOptions: ParamStoreOptions = {
+	debounce: undefined,
 	multiple: false
 };
 
