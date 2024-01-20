@@ -21,7 +21,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-      - run: pnpm install -fronze-lockfile
+      - run: pnpm install --fronze-lockfile
 
       - name: Update package version
         run: pnpm version ${{ env.RELEASE_VERSION }} --no-git-tag-version
