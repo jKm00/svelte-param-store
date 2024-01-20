@@ -28,9 +28,9 @@
 	let tools = useParamStore('tools', { multiple: true });
 
 	function clearFilters() {
-		title.set('');
-		company.set('');
-		tools.set([]);
+		title.setImmediate('');
+		company.setImmediate('');
+		tools.setImmediate([]);
 	}
 </script>
 

@@ -32,6 +32,9 @@ export const useParamStore = (key: string, options?: ParamStoreOptions) => {
 	// Identifier of the timeout used for debouncing
 	let timeoutId: number | null = null;
 
+	// Flag to indicate if debounce should be omitted
+	let omitDebounce = false;
+
 	onMount(() => {
 		let first = true;
 		// Subscribe to the store
@@ -42,13 +45,17 @@ export const useParamStore = (key: string, options?: ParamStoreOptions) => {
 				return;
 			}
 
-			if (options.debounce) {
+			if (!omitDebounce && options.debounce !== undefined) {
 				await waitForDelay(options.debounce);
+			}
+
+			if (omitDebounce) {
+				omitDebounce = false;
 			}
 
 			const currentUrl = get(page).url;
 
-			const params = updateParams(currentUrl, value);
+			const params = updateParams(currentUrl, key, value);
 			navigate(`?${params.toString()}${currentUrl.hash}`);
 		});
 
@@ -73,10 +80,13 @@ export const useParamStore = (key: string, options?: ParamStoreOptions) => {
 	}
 
 	/**
-	 * Updates the URL search params
-	 * @param value
+	 * Updates the URL with for the given key with the given value
+	 * @param currentUrl the current URL
+	 * @param key the key to update the value of
+	 * @param value the value to set
+	 * @returns a URL with updated URLSearchParams
 	 */
-	function updateParams(currentUrl: URL, value: string | string[]) {
+	function updateParams(currentUrl: URL, key: string, value: string | string[]) {
 		const params = currentUrl.searchParams;
 
 		switch (typeof value) {
@@ -106,9 +116,19 @@ export const useParamStore = (key: string, options?: ParamStoreOptions) => {
 		}
 	}
 
+	/**
+	 * Sets the value of the store without debouncing
+	 * @param value the value to set
+	 */
+	function setImmediate(value: string | string[]) {
+		omitDebounce = true;
+		set(value);
+	}
+
 	return {
 		subscribe,
 		update,
-		set
+		set,
+		setImmediate
 	};
 };

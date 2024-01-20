@@ -48,6 +48,8 @@ export const updateProgrammatically = `<script lang="ts">
     $company = '';
     // or
     // company.set('');
+    // or, if you want to omit the debounce if it is enabled
+    // company.setImmediate('')
   }
 </script>
 
