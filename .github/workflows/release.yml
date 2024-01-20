@@ -26,10 +26,6 @@ jobs:
         run: npm version ${{ env.RELEASE_VERSION }} --no-git-tag-version
 
       - name: Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: npm release
+        run: npm publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
