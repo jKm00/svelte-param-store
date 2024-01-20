@@ -1,12 +1,13 @@
 <script lang="ts">
 	export let href: string | undefined = undefined;
 	export let variant: 'primary' | 'outline' = 'primary';
+	export let blank: boolean = false;
 
 	$: classes = variant === 'primary' ? 'btn' : 'btn btn--outline';
 </script>
 
 {#if href}
-	<a {href} class={classes}><slot /></a>
+	<a {href} class={classes} target={blank ? '_blank' : '_self'}><slot /></a>
 {:else}
 	<button on:click class={classes}><slot /></button>
 {/if}
