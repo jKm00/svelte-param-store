@@ -2,7 +2,8 @@
 	import hljs from 'highlight.js/lib/core';
 	import javascript from 'highlight.js/lib/languages/javascript';
 	import xml from 'highlight.js/lib/languages/xml';
-	import 'highlight.js/styles/github.css';
+	// import 'highlight.js/styles/atom-one-light.css';
+	import '../../styles/codeTheme.css';
 	import copy from 'copy-to-clipboard';
 
 	hljs.registerLanguage('javascript', javascript);
@@ -93,15 +94,17 @@
 	.wrapper {
 		display: flex;
 		position: relative;
+		background: var(--background);
 	}
 
 	.code {
 		flex-grow: 1;
-		background-color: var(--muted);
+		background-color: var(--code-block);
 		border-radius: var(--border-radius);
 		padding: 1rem;
 
 		font-size: 0.9rem;
+		color: var(--foreground);
 
 		white-space: pre-wrap;
 	}

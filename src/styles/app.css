@@ -36,12 +36,27 @@ svg {
 	--accent: #000;
 	--accent-foreground: #fff;
 	--accent-hover: #1a1a1a;
+	--code-block: #eef2f6;
 
 	--border-radius: 0.5rem;
 }
 
+.dark {
+	--background: #000;
+	--foreground: #fff;
+	--foreground-muted: #718096;
+	--muted: #1a1a1a;
+	--muted-foreground: #718096;
+	--muted-hover: #2d2d2d;
+	--accent: #fff;
+	--accent-foreground: #000;
+	--accent-hover: #eef2f6;
+	--code-block: #1a1a1a;
+}
+
 html {
 	scroll-behavior: smooth;
+	background-color: var(--background);
 }
 
 body {
@@ -103,4 +118,6 @@ p {
 	padding: 0.5rem 1rem;
 	border: 2px solid var(--accent);
 	border-radius: var(--border-radius);
+
+	background-color: var(--muted);
 }
