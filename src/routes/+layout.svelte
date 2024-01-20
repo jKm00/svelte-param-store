@@ -60,18 +60,18 @@
 	}
 
 	.sun {
-		display: block;
+		display: none;
 	}
 
 	:global(.dark .sun) {
-		display: none;
+		display: block;
 	}
 
 	.moon {
-		display: none;
+		display: block;
 	}
 
 	:global(.dark .moon) {
-		display: block;
+		display: none;
 	}
 </style>
