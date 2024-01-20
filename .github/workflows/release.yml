@@ -20,12 +20,16 @@ jobs:
           node-version: '20.x'
 
       - name: Install dependencies
-        run: npm install --fronze-lockfile
+        run: npm install --frozen-lockfile
 
       - name: Update package version
         run: npm version ${{ env.RELEASE_VERSION }} --no-git-tag-version
 
       - name: Publish to npm
-        run: npm publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: npm release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
