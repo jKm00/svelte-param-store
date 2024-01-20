@@ -1,0 +1,4 @@
+name: Publish packageto npmjs
+on:
+  release:
+    types: [published]
